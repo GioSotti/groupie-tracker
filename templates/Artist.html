@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+
+<!--Entete Page Artist-->
+<head>
+    <link rel="stylesheet" href="../css/Artist.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="icon" href="/assets/images/favicon.ico" type="image/x-icon" />
+
+    <title>Artist +</title>
+</head>
+<body>
+<section>
+    <nav>
+
+        <a href="/accueil" class="nav-icon" aria-label="homepage" aria-current="page">
+          <span>GROUPIE-TRACKER</span>
+      
+        </a>
+        <div class="main-navlinks">
+          <button type="button" class="hamburger"  aria-label="Toggle Navigation" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+          <div class="navlinks-container">
+
+          </div>
+        </div>
+    <div id="autocomplete" class="autocomplete" name="Tab">
+          <form action="/accueil" method="POST">
+              <input name="Tab"  id="browser" placeholder="Rechercher"autocomplete="off">
+            <button type="submit" hidden="true"></button>
+          </form>
+          <input type="reset" value="Réinitialiser" class="button">
+        </div>
+      <!--
+      
+              <div class="nav-authentication">
+                <a href="#" class="user-toggler" aria-label="Sign in page">
+                  <img src="ressources/user.svg" alt="user icon" />
+                </a>
+                <div class="sign-btns">
+                  <button type="button">Sign In</button>
+                  <button type="button">Sign Up</button>
+                </div>
+              </div>
+            -->
+      </nav>
+      <script src="./JS/script.js"></script>
+      
+      <!-- sorter -->
+      <div id="sorter-container">
+        <div id="sorter-content">
+      
+          <div class="filter-creation">
+            <h3>Filter by Creation Date</h3>
+            <div id="autocomplete" class="autocomplete" name="Min">
+              <form action="/accueil" method="POST">
+                <input name="Tab" id="browser" placeholder="Date min">
+                <button type="submit" hidden="true"></button>
+                <ul class="autocomplete-result-list"></ul>
+              </form>
+            </div>
+            <div id="autocomplete" class="autocomplete" name="Max">
+              <form action="/accueil" method="POST">
+                <input name="Tab" id="browser" placeholder="Date max">
+                <button type="submit" hidden="true"></button>
+                <ul class="autocomplete-result-list"></ul>
+              </form>
+            </div>
+          </div>
+      
+          <div class="filter-album">
+            <h3>Filter by First Album Date</h3>
+            <div id="autocomplete" class="autocomplete" name="DateFirst">
+              <form action="/accueil" method="POST">
+                <input name="Tab" id="browser" placeholder="Date min">
+                <button type="submit" hidden="true"></button>
+                <ul class="autocomplete-result-list"></ul>
+              </form>
+            </div>
+            <div id="autocomplete" class="autocomplete" name="DateFirst">
+              <form action="/accueil" method="POST">
+                <input name="Tab" id="browser" placeholder="Date max">
+                <button type="submit" hidden="true"></button>
+                <ul class="autocomplete-result-list"></ul>
+              </form>
+            </div>
+          </div>
+      
+          <div class="filter-number">
+            <h3>Filter by Number of Members</h3>
+            <input type="checkbox" id="member-filter2" value="2">2<br>
+            <input type="checkbox" id="member-filter3" value="3">3<br>
+            <input type="checkbox" id="member-filter4" value="4">4<br>
+            <input type="checkbox" id="member-filter5" value="5">5+<br>
+          </div>
+      
+          <div class="filter-location">
+            <h3>Filter by Locations of Concerts</h3>
+            <input type="checkbox" id="location-filter" value="USA">USA<br>
+            <input type="checkbox" id="location-filter" value="Europe">Europe<br>
+            <input type="checkbox" id="location-filter" value="Asia">Asia<br>
+            <input type="checkbox" id="location-filter" value="Australia">Australia<br>
+          </div>
+          <input type="submit" value="SUBMIT" class="button">
+        </div>
+      </div>
+</section>
+
+<!--Card Artist With Infos-->
+<div class="container">
+    <div class="box">
+        <img class="image" src= {{.Image}} alt="artist">
+        <div class="infos">
+            <h2> {{.Name}}</h2><br>
+            <p>
+            <div style="text-decoration: underlined;"> Date de création :</div>
+            {{.CreationDate}}</p><br>
+            <p> Date du premier album :<br> {{.FirstAlbum}}</p><br>
+            <div>
+                <p>Liste des membres :<br> {{range .Members}}<br></p>
+                    <span>{{.}}</span>
+                {{end}}
+            </div>
+          <!--  <div><br>Lieux où ils ont joué :  <br>
+                {{range .Locations}}
+                    <span> {{.}}</span>
+                {{end}} -->
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

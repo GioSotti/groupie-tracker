@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GROUPIE-TRACKER</title>
+  <link rel="icon" href="/assets/images/favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="./css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+          href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Roboto+Flex:opsz,wght@8..144,100;8..144,300;8..144,500;8..144,700;8..144,900&display=swap"
+          rel="stylesheet"
+  />
+</head>
+<body>
+<nav>
+
+
+  <a href="/accueil" class="nav-icon" aria-label="homepage" aria-current="page">
+    <span>GROUPIE-TRACKER</span>
+
+  </a>
+
+  <div class="main-navlinks">
+    <button type="button" class="hamburger"  aria-label="Toggle Navigation" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <div class="navlinks-container">
+<a href="#" onclick="displaySort()" >Trier </a >
+    </div>
+  </div>
+
+  <div id="autocomplete" class="autocomplete" name="Tab" >
+    <form action="/accueil" method="POST">
+      <input name="Tab" list="browsers" id="browser" placeholder="Rechercher"autocomplete="off">
+      <datalist id="browsers">
+        {{range .}}
+        <option value="{{.Name}}">
+          {{end}}
+      </datalist>
+      <button type="submit" hidden="true"></button>
+    </form>
+    <a href="/accueil">
+    <input type="reset" value="Réinitialiser" class="button">
+    </a>
+  </div>
+
+
+
+  <!--
+        <div class="nav-authentication">
+          <a href="#" class="user-toggler" aria-label="Sign in page">
+            <img src="ressources/user.svg" alt="user icon" />
+          </a>
+          <div class="sign-btns">
+            <button type="button">Sign In</button>
+            <button type="button">Sign Up</button>
+          </div>
+        </div>
+      -->
+</nav>
+<script src="./JS/script.js"></script>
+
+<!-- sorter -->
+<div id="sorter-container">
+  <div id="sorter-content">
+
+    <form action="/accueil" method="POST">
+      <label for="filters">Choose your filter:</label>
+      <h3>Filter By Type : </h3>
+      <div class="grpArt">
+        <div class="boxArt">
+          <label class="custom-radio-btn">
+            <input type="radio" id="artistFilter" name="Filter" value="artist">
+            <span class="checkmark"></span>
+          </label>
+          <label for="artistFilter">Artist</label>
+        </div>
+        <div class="boxGrp">
+          <label class="custom-radio-btn">
+            <input type="radio" id="groupFilter" name="Filter"value="group">
+            <span class="checkmark"></span>
+          </label>
+          <label for="groupFilter">Group</label>
+        </div>
+      </div>
+      <h3>Filter By Date Of Creations  </h3>
+
+      <div class="date">
+        <label for="Date"></label>
+        <p> min :<input class="dateIn" type="number" step="1" min="1900" max="2020" name="DateMin">
+        </p>
+        <p> max :<input class="dateIn" type="number" step="1" min="1900" max="2020" name="DateMax">
+        </p>
+      </div><h3>Filter By Date Of Album  </h3>
+
+      <div class="date">
+        <label for="Date"></label>
+        <p> min :<input class="dateIn" type="number" step="1" min="1900" max="2020" name="DateAMin">
+        </p>
+        <p> max :<input class="dateIn" type="number" step="1" min="1900" max="2020" name="DateAMax">
+        </p>
+      </div>
+
+      <h3>Filter By Members </h3>
+      <div class="size">
+        <div class="box">
+          <h5 class="nbr">1</h5>
+          <label class="custom-radio-btn">
+            <input type="radio" id="size" name="size" value="1" >
+            <span class="checkmark"></span>
+          </label>
+        </div>
+        <div class="box">
+          <h5 class="nbr">2</h5>
+          <label class="custom-radio-btn">
+            <input type="radio" id="size" name="size" value="2">
+            <span class="checkmark"></span>
+          </label>
+        </div>
+        <div class="box">
+          <h5 class="nbr">3</h5>
+          <label class="custom-radio-btn">
+            <input type="radio" id="size" name="size" value="3">
+            <span class="checkmark"></span>
+          </label>
+        </div>
+        <div class="box">
+          <h5 class="nbr">4</h5>
+          <label class="custom-radio-btn">
+            <input type="radio" id="size" name="size" value="4">
+            <span class="checkmark"></span>
+          </label>
+        </div>
+
+        <div class="box">
+          <h5 class="nbr">5</h5>
+          <label class="custom-radio-btn">
+            <input type="radio" id="size" name="size" value="5">
+            <span class="checkmark"></span>
+          </label>
+        </div>
+
+        <div class="box">
+          <h5 class="nbr">6</h5>
+          <label class="custom-radio-btn">
+            <input type="radio" id="size" name="size" value="6">
+            <span class="checkmark"></span>
+          </label>
+        </div>
+
+        <div class="box">
+          <h5 class="nbr">7</h5>
+          <label class="custom-radio-btn">
+            <input type="radio" id="size" name="size" value="7">
+            <span class="checkmark"></span>
+          </label>
+        </div>
+
+        <div class="box">
+          <h5 class="nbr">8</h5>
+          <label class="custom-radio-btn">
+            <input class="point" type="radio" id="size" name="size" value="8">
+            <span class="checkmark"></span>
+          </label>
+          <br>
+        </div>
+        <input class="sub" type="submit" value="Submit">
+      </div>
+    </form>
+  </div>
+
+</div>
+
+
+<div class="container">
+  <div class="filter">
+
+
+
+
+<div class="main">
+  {{range .}}
+  <ul class="cards">
+    <li class="cards_item">
+      <div class="card">
+        <div class="card_image"><img src="{{.Image}}"> </div>
+        <div class="card_content">
+          <h2 class="card_title">{{.Name}}</h2>
+          <a href="/Artist/{{.ID}}">
+              <button class="btn card_btn" >Read More</button>
+          </a>
+        </div>
+      </div>
+    </li>
+  </ul>
+  {{end}}
+</div>
+  </div>
+</div>
+</body>
+</html>
